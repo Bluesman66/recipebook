@@ -13,8 +13,7 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
-  recipeIngredients: FormArray;
-  
+  recipeIngredients: FormArray;  
 
   constructor(private route: ActivatedRoute,
               private recipeService: RecipeService) { }
@@ -63,6 +62,15 @@ export class RecipeEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.recipeForm);
+  }
+
+  onAddIngredient() {
+    this.recipeIngredients.push(
+      new FormGroup({
+        'name': new FormControl(),
+        'amount': new FormControl()
+      })
+    );
   }
 
 }
