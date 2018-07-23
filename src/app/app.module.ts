@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { RecipeService } from './recipes/recipe.service';
 import { RecipesModule } from './recipes/recipes.module';
 import { DataStorageService } from './shared/data-storage.service';
+import { SharedModule } from './shared/shared.module';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
@@ -31,7 +32,8 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     AppRoutingModule,
     FormsModule,    
     HttpModule,
-    RecipesModule
+    RecipesModule,
+    SharedModule
   ],
   providers: [
     ShoppingListService,
