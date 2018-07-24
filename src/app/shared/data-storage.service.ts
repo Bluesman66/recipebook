@@ -14,8 +14,7 @@ export class DataStorageService {
               private recipeService: RecipeService,
               private authService: AuthService) { }
 
-  storeRecipes() {
-    const token = this.authService.getToken();
+  storeRecipes() {    
     //const header = new HttpHeaders().set('Authorization', 'Some token'); 
     // return this.httpClient.put('https://ng-recipe-book-27947.firebaseio.com/recipes.json',
     //   this.recipeService.getRecipes(), {
@@ -24,19 +23,16 @@ export class DataStorageService {
     //     //headers: header
     //   });
     const req = new HttpRequest('PUT', 'https://ng-recipe-book-27947.firebaseio.com/recipes.json',
-      this.recipeService.getRecipes(), {
-        params: new HttpParams().set('auth', token),
+      this.recipeService.getRecipes(), {        
         reportProgress: true
       });
     return this.httpClient.request(req);
   }
 
-  getRecipes() {    
-    const token = this.authService.getToken();
+  getRecipes() {        
     this.httpClient.get<Recipe[]>('https://ng-recipe-book-27947.firebaseio.com/recipes.json', {
       observe: 'body',
-      responseType: 'json',
-      params: new HttpParams().set('auth', token)
+      responseType: 'json'
     })
       .pipe(
         map(
