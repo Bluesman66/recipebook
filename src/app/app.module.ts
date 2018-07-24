@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
+import { CoreModule } from './core/core.module';
 import { RecipeService } from './recipes/recipe.service';
 import { DataStorageService } from './shared/data-storage.service';
 import { SharedModule } from './shared/shared.module';
@@ -17,9 +16,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent        
+    AppComponent        
   ],
   imports: [
     BrowserModule,
@@ -27,7 +24,8 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     HttpModule,    
     SharedModule,
     ShoppingListModule,
-    AuthModule
+    AuthModule,
+    CoreModule
   ],
   providers: [
     ShoppingListService,
