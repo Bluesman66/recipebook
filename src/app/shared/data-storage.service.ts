@@ -1,6 +1,6 @@
 import { map } from 'rxjs/operators';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { AuthService } from '../auth/auth.service';
@@ -16,9 +16,11 @@ export class DataStorageService {
 
   storeRecipes() {
     const token = this.authService.getToken();
+    //const header = new HttpHeaders().set('Authorization', 'Some token'); 
     return this.httpClient.put('https://ng-recipe-book-27947.firebaseio.com/recipes.json?auth=' + token,
       this.recipeService.getRecipes(), {
-        observe: 'body'
+        observe: 'body',
+        //headers: header
       });
   }
 
