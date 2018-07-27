@@ -14,7 +14,7 @@ const initialSate: State = {
     ],
     editedIngredient: null,
     editedIngredientIndex: -1
-}
+};
 
 export function shoppingListReducer(state = initialSate, action: ShoppingListActions.ShoppingListActions) {
     switch (action.type) {
