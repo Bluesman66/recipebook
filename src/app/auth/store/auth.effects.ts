@@ -3,6 +3,7 @@ import { from } from 'rxjs';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, Effect } from '@ngrx/effects';
 
 import * as AuthActions from './auth.actions';
@@ -70,6 +71,7 @@ export class AuthEffects {
             ),
             mergeMap(
                 (token: string) => {
+                    this.router.navigate(['/']);
                     return [
                         {
                             type: AuthActions.SIGNIN
@@ -83,5 +85,5 @@ export class AuthEffects {
             )
         );
 
-    constructor(private actions$: Actions) { }
+    constructor(private actions$: Actions, private router: Router) { }
 }
