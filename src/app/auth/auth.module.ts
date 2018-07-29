@@ -11,8 +11,8 @@ import { SignupComponent } from './signup/signup.component';
         SigninComponent,
         SignupComponent
     ],
-    imports: [   
-        CommonModule,     
+    imports: [
+        CommonModule,
         FormsModule,
         AuthRoutingModule
     ]
