@@ -17,22 +17,19 @@ export class AuthEffects {
                 (action: AuthActions.TrySignup) => {
                     return action.payload;
                 }
-            )
-        ).pipe(
+            ),
             switchMap(
                 (authData: { username: string, password: string }) => {
                     return from(firebase.auth().createUserWithEmailAndPassword(
                         authData.username, authData.password)
                     );
                 }
-            )
-        ).pipe(
+            ),
             switchMap(
                 () => {
                     return from(firebase.auth().currentUser.getIdToken());
                 }
-            )
-        ).pipe(
+            ),
             mergeMap(
                 (token: string) => {
                     return [
