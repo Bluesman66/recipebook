@@ -24,7 +24,7 @@ export class RecipeService {
             ])
     ];
 
-    constructor() {}
+    constructor() { }
 
     getRecipes() {
         return this.recipes.slice();
@@ -37,7 +37,7 @@ export class RecipeService {
 
     getRecipe(index: number) {
         return this.recipes.slice()[index];
-    }    
+    }
 
     addRecipe(recipe: Recipe) {
         this.recipes.push(recipe);
