@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect } from '@ngrx/effects';
 
-import { AppRoutingModule } from '../../app-routing.module';
 import * as AuthActions from './auth.actions';
 
 @Injectable()
@@ -88,7 +87,10 @@ export class AuthEffects {
     @Effect({ dispatch: false })
     logout = this.actions$
         .ofType(AuthActions.LOGOUT)
-        .pipe(tap(() => this.router.navigate(['/'])));
+        .pipe(
+            switchMap(() => from(firebase.auth().signOut())),
+            tap(() => this.router.navigate(['/']))
+        );
 
     constructor(private actions$: Actions, private router: Router) { }
 }
